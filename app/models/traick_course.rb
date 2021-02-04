@@ -1,0 +1,2 @@
+class TraickCourse < ApplicationRecord
+end
