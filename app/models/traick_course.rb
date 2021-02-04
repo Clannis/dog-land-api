@@ -1,2 +1,2 @@
-class TraickCourse < ApplicationRecord
+class TrickCourse < ApplicationRecord
 end

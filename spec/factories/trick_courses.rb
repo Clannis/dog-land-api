@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :traick_course do
+  factory :trick_course do
     course { "" }
     trick { "" }
   end
