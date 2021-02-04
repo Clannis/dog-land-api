@@ -1,0 +1,2 @@
+class TrainingSessionDog < ApplicationRecord
+end
