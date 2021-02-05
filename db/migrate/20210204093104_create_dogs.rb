@@ -6,7 +6,7 @@ class CreateDogs < ActiveRecord::Migration[6.0]
       t.integer :age
       t.boolean :shots
       t.datetime :last_shot_date
-      t.reference :user, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

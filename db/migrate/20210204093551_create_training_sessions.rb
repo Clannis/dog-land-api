@@ -3,8 +3,8 @@ class CreateTrainingSessions < ActiveRecord::Migration[6.0]
     create_table :training_sessions do |t|
       t.datetime :starts_at
       t.string :location
-      t.reference :trainer, foreign_key: true
-      t.reference :course, foreign_key: true
+      t.references :trainer, foreign_key: true
+      t.references :course, foreign_key: true
 
       t.timestamps
     end
