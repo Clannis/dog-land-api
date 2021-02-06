@@ -5,7 +5,13 @@ class SessionsController < ApplicationController
             token = encode_token(user.id)
             render json: { user: UserSerializer.new(user), token: token }
         else
-            render json: { errors: "Invalid Email or Password"} 
+            user = Trainer.find_by(email: user_params[:email])
+            if user && user.authenticate(user_params[:password])
+                token = encode_token(user.id)
+                render json: { trainer: TrainerSerializer.new(user), token: token }
+            else
+                render json: { errors: "Invalid Email or Password"} 
+            end
         end
     end
 
