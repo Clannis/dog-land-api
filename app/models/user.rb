@@ -9,7 +9,6 @@ class User < ApplicationRecord
     validates :username, :first_name, :last_name, :phone_number, :email, presence: true
     validates :password, presence: true, on: :create
     validates :phone_number, numericality: { only_integer: true }
-    validates :password, confirmation: { case_sensitive: true}
 
     def name
         self.first_name.downcase.capitalize + " " + self.last_name.downcase.capitalize

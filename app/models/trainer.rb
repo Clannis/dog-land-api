@@ -11,7 +11,6 @@ class Trainer < ApplicationRecord
     validates :phone_number, numericality: { only_integer: true }
     validates :username, :first_name, :last_name, :phone_number, :email, :certification, presence: true
     validates :password, presence: true, on: :create
-    validates :password, confirmation: { case_sensitive: true}
     
     def name
         self.first_name.downcase.capitalize + " " + self.last_name.downcase.capitalize
