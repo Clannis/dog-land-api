@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
     validates :username, uniqueness: true, on: :create
     validates :email, uniqueness: true
+    validate :valid_email, on: :create
     validates :username, :first_name, :last_name, :phone_number, :email, presence: true
     validates :password, presence: true, on: :create
     validates :phone_number, numericality: { only_integer: true }
@@ -45,6 +46,12 @@ class User < ApplicationRecord
         end
         result[:user] = user
         result
+    end
+
+    def valid_email
+        if email && Trainer.find_by(email: email)
+            errors.add(:email, "is already in use.")
+        end
     end
 
 end
