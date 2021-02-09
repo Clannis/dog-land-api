@@ -8,6 +8,7 @@ class Trainer < ApplicationRecord
     has_secure_password
     validates :username, uniqueness: true
     validates :email, uniqueness: true
+    validate :valid_email, on: :create
     validates :phone_number, numericality: { only_integer: true }
     validates :username, :first_name, :last_name, :phone_number, :email, :certification, presence: true
     validates :password, presence: true, on: :create
@@ -26,6 +27,12 @@ class Trainer < ApplicationRecord
             nil
         else
             trainer.first
+        end
+    end
+
+    def valid_email
+        if email && User.find_by(email: email)
+            errors.add(:email, "is already in use.")
         end
     end
 end
