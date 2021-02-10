@@ -1,5 +1,11 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :email, :name, :phoneNumber
+  include Rails.application.routes.url_helpers
+
+  attributes :id, :username, :email, :name, :phoneNumber, :photo
+    
+  def photo
+      rails_blob_path(object.photo, only_path: true) if object.photo.attached?
+  end
 
   def phoneNumber  
     object.display_phone_number
