@@ -1,3 +1,12 @@
 class TrainerSerializer < ActiveModel::Serializer
-  attributes :id, :username, :email, :first_name, :last_name, :phone_number, :certification
+  attributes :id, :username, :email, :name, :last_name, :phoneNumber, :certification
+
+  def phoneNumber  
+    object.display_phone_number
+  end
+
+  def name
+    object.name
+  end
+
 end
