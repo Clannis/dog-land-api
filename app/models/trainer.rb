@@ -5,6 +5,8 @@ class Trainer < ApplicationRecord
     has_many :dogs, through: :training_sessions
     has_many :users, through: :dogs
 
+    has_one_attached :photo
+
     has_secure_password
     validates :username, uniqueness: true
     validates :email, uniqueness: true

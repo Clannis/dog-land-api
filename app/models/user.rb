@@ -4,6 +4,8 @@ class User < ApplicationRecord
     has_many :courses, through: :training_sessions
     has_secure_password
 
+    has_one_attached :photo
+
     validates :username, uniqueness: true, on: :create
     validates :email, uniqueness: true
     validate :valid_email, on: :create
