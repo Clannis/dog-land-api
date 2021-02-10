@@ -14,7 +14,6 @@ class SessionsController < ApplicationController
     end
 
     def autologin
-        # byebug
         if params[:type]
             if params[:type] == "user"
                 user = session_user
@@ -22,7 +21,6 @@ class SessionsController < ApplicationController
                 trainer = session_trainer
             end
         end
-        # byebug
         if user
             token = encode_token(user.id)
             render json: {user: UserSerializer.new(user), token: token}
