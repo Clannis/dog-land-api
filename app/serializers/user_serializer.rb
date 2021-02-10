@@ -9,4 +9,8 @@ class UserSerializer < ActiveModel::Serializer
     object.name
   end
 
+  def username
+    object.display_username
+  end
+
 end
