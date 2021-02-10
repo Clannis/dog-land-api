@@ -16,6 +16,10 @@ class ApplicationController < ActionController::API
         User.find_by_id(decode_token)
     end
 
+    def session_trainer
+        Trainer.find_by_id(decode_token)
+    end
+
     def encode_token(id)
         JWT.encode({user_id: id}, ENV["JWT_KEY"])
     end

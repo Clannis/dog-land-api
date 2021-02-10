@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   end
   
   post '/login', to: 'sessions#create'
+  post '/autologin', to: 'sessions#autologin'
 end

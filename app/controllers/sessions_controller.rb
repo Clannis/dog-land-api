@@ -13,6 +13,27 @@ class SessionsController < ApplicationController
         end
     end
 
+    def autologin
+        # byebug
+        if params[:type]
+            if params[:type] == "user"
+                user = session_user
+            else
+                trainer = session_trainer
+            end
+        end
+        # byebug
+        if user
+            token = encode_token(user.id)
+            render json: {user: UserSerializer.new(user), token: token}
+        elsif trainer
+            token = encode_token(trainer.id)
+            render json: {trainer: TrainerSerializer.new(trainer), token: token}
+        else
+            render json: {errors: "Dont try and hack me. I see YOU!"}
+        end
+    end
+
     private
 
     def user_params
