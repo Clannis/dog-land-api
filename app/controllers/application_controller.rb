@@ -16,8 +16,16 @@ class ApplicationController < ActionController::API
         User.find_by_id(decode_token)
     end
 
+    def set_session_user
+        @user = User.find_by_id(decode_token)
+    end
+
     def session_trainer
         Trainer.find_by_id(decode_token)
+    end
+
+    def set_session_trainer
+        @trainer = Trainer.find_by_id(decode_token)
     end
 
     def encode_token(id)

@@ -15,13 +15,11 @@ class Dog < ApplicationRecord
         self.last_shot_date.strftime("%B %d, %Y")
     end
 
-    def self.update_shot_records
-        Dog.all.each do |dog|
-            if (dog.last_shot_date + 1.year) <= Date.current
-                dog.update(shots: false)
-            else
-                dog.update(shots: true)
-            end
+    def update_shot_records
+        if (self.last_shot_date + 1.year) <= Date.current
+            self.update(shots: false)
+        else
+            self.update(shots: true)
         end
     end
 

@@ -1,3 +1,7 @@
 class DogSerializer < ActiveModel::Serializer
-  attributes :id, :name, :breed, :age, :shots, :last_shot_date
+  attributes :id, :name, :breed, :age, :shots, :lastShotDate
+
+  def lastShotDate
+    object.last_shot_date
+  end
 end
