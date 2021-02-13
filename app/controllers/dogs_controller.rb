@@ -4,11 +4,8 @@ class DogsController < ApplicationController
     def create
         if @user
             dog = @user.dogs.new(dog_params)
-            byebug
             if dog.save
-                byebug
                 dog.update_shot_records
-                byebug
                 render json: { dog: DogSerializer.new(dog) }
             else
                 render json: { errors: dog.errors.full_messages.to_sentence}
