@@ -23,3 +23,5 @@
 
 # Ignore .env for environmental credentials and more.
 .env
+
+.DS_Store
