@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :trainers, only: [:show, :index, :create, :edit, :update]
   resources :users, only: [:show, :index, :create, :edit, :update] do
-    resources :dogs, only: [:new, :create, :show, :index, :destroy]
+    resources :dogs, only: [:create, :show, :index, :destroy, :update]
   end
   
   post '/login', to: 'sessions#create'
