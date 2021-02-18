@@ -29,6 +29,20 @@ class DogsController < ApplicationController
         end
     end
 
+    def destroy
+        if @user
+            dog = @user.dogs.find(params[:id])
+            dog_id = dog.id
+            if dog.delete
+                render json: { dog: {id: dog_id} }
+            else
+                render json: { errors: dog.errors.full_messages.to_sentence}
+            end
+        else
+            render json: {errors: "Dont try and hack me. I see YOU!"}
+        end
+    end
+
     private
 
     def dog_params
